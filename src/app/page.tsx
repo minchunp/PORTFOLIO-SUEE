@@ -1,6 +1,21 @@
+'use client';
+
+import { useState } from 'react';
+
 import Image from 'next/image';
+import OnBoarding from '@/components/OnBoarding';
 
 export default function Home() {
+  const [showOnBoarding, setShowOnBoarding] = useState(true);
+
+  const handleOnBoardingComplete = () => {
+    setShowOnBoarding(false);
+  };
+
+  if (showOnBoarding) {
+    return <OnBoarding onComplete={handleOnBoardingComplete} />;
+  }
+
   return (
     <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-sans sm:p-20">
       <main className="row-start-2 flex flex-col items-center gap-[32px] sm:items-start">
